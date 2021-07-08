@@ -153,7 +153,7 @@ public class GuestbookDao {
 	
 	
 	//삭제
-	public int guestDelete(int no) {
+	public int guestDelete(int no, String password) {
 		int count = 0;
 		getConnection();
 
@@ -162,11 +162,13 @@ public class GuestbookDao {
 			String query = ""; // 쿼리문 문자열만들기, ? 주의
 			query += " delete from guestbook ";
 			query += " where no = ? ";
+			query += " and password = ? ";
 			
 			pstmt = conn.prepareStatement(query); // 쿼리로 만들기
 
-			pstmt.setInt(1, no);// ?(물음표) 중 1번째, 순서중요
-
+			pstmt.setInt(1, no);
+			pstmt.setString(2, password);
+			
 			count = pstmt.executeUpdate(); // 쿼리문 실행
 
 			// 4.결과처리

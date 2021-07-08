@@ -18,17 +18,19 @@ request.setCharacterEncoding("UTF-8");
 	
 	
 	
+	//쿼리문 없
+	//	if(guestList.get(i).getNo() == no) {
+	//		String realP = guestList.get(i).getPassword();
+	//		System.out.println(realP);
+	//		System.out.println(i);
+	//		if(password.equals(realP)) {
+	//			int count = guestDao.guestDelete(no);
+	//		}
+	//	}
+	//}
 	
-	for(int i=0; i<guestList.size(); i++) {
-		if(guestList.get(i).getNo() == no) {
-			String realP = guestList.get(i).getPassword();
-			System.out.println(realP);
-			System.out.println(i);
-			if(password.equals(realP)) {
-				int count = guestDao.guestDelete(no);
-			}
-		}
-	}
+	//쿼리문 있
+	int count = guestDao.guestDelete(no, password);
 
 	
 	
@@ -37,6 +39,7 @@ request.setCharacterEncoding("UTF-8");
 	//}
 	
 	response.sendRedirect("./addList.jsp");
+	
 %>
 
 <!DOCTYPE html>
